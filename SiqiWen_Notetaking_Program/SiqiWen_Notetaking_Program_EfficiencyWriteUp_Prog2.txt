@@ -1,0 +1,29 @@
+Efficiency Review Write-up
+Siqi Wen   CS163    Program2
+
+
+This is a Note-taking Program. In this program, users will be able to take notes for doing your favorite activity. For each step of the activity, user will enter a step number; what to do for each step and what went wrong so that they can do a better job next time. 
+
+
+With a menu interface, users can choose what they want the program to implement each time. For example: Add a new step for this trial; Delete the oldest step for this trial; Display all steps for this trial; Add the entire activity into the Trial List (Push); Display all trials from old to new; Display just the data at the Top of stack; Pop the most recent Queue from Top (removing it).
+
+
+In this program, I created two structures:
+struct node_queue which contains: an integer for the task number; a pointer for the description of the task; a pointer for the information for how to improve or what went wrong.
+struct node_stack which contains: a pointer points to a dynamically allocated array of queues and a next pointer points to another node_stack.
+There are also two class interfaces:
+class queue that contains some member functions and a tail/rear pointer points to the most recent queue object
+class stack which contains some member functions; a head pointer points to the first node_stack; an integer for the index for top.
+
+
+In my opinion, the data structures I selected performed well for the assigned application. My program was is able to complete all missions that the application wants to complete.
+
+
+The concepts I used are queue and stack. 
+The data structure I chose for queue is a circular linked list, the reason I didn’t choose a circular array for queue is because array’s size is always fixed (not flexible at all). The reason I didn’t choose a linear linked list is because with a LLL, in this case, I need to have two pointers (head and tail) to avoid unnecessary traversing. With a circular linked list, the size is flexible (can grow and shrink as needed) and I only need one pointer(rear) as the data member in the class.
+
+The data structure I chose for stack is a linear linked list of arrays. This is a very useful structure, because it has the direct access (because of array) as well as the flexible size (because of the linear linked list). The reason I didn’t chose a LLL for the stack is because LLL requires an extra pointer (next pointer) which can cause memory overhead, and it sometimes requires a lot of traversing. The reason I didn’t choose an array for this is because array’s size is fixed, it’s hard to insert an element wherever I want or remove an element from some index.
+
+With a linear linked list, it’s easier to apply the stack concept. Each array size is a constant number, I chose 5 in my program since it’s easier to test the program with a smaller number. So every time, user wants to push a data onto the stack, the data would be added in the array at top_index, the top_index would be moved to the next block, if the array of a node is full, then next time when push is implemented, a new node with a new array will be created. When user wants to pop the most recent data (since stack only deals with the top) from top of the stack, after the data is popped, if the array of the first node is empty, then the program would delete the first node and connect head with the second node if there’s any or head would be NULL.
+
+With using a linear linked list of arrays, we can take advantage of the flexible size that a LLL has and the direct access that array has. Moreover, there wouldn’t be that much memory overhead since we don’t have a node for every data.
